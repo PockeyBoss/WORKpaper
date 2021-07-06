@@ -1,1 +1,24 @@
-dW#ja3PA&X^3iUIxVVI(
+/****
+En el codigo JS del carrito tenes esto
+(comienza en linea 34 del app.js)*****/
+function leerDatosCafe(cafe) {
+    const infoCafe = {
+        imagen: cafe.querySelector('img').src,
+        titulo: cafe.querySelector('h4').textContent,
+        precio: cafe.querySelector('.precio span').textContent,
+        id: cafe.querySelector('a').getAttribute('date-id')   /***** este id se esta cargando null logicamente porque no existia cuando armaste la web. Ahora yo tengo el id que traigo de la BD. Pero no se de que parte del html lo estas tomando o que podemos poner en el hmtl para que yo le asigne el id y el js tome este valor para completar el objeto.
+        *****/
+    }
+    insertarCarrito(infoCafe);
+}
+
+/***Por otro lado, SI, necesito que el js me devuelva un json completo, o un array, o por lo menos una variable con el valor total del carrito (el tema cac es que con el valor total ponele que pueda hacer todo el tema del pago, en algun lado deberia registrar que es lo que se esta comprando, imaginate un pedido con 4 o 5 items no sabes que se compro***/
+/** Y otra cosa que no entiendo es porque si yo agrego un link en donde esta el carrito (debajo de vaciar carrito),
+por ejemplo:
+<a href="{{route('cart.create')}}" class="button u-full-width">COMPRAR</a> //lo que esta href es algo que usa laravel para redireccionar, pero podria ponerle una url normal si es necesario.
+ cuando le doy click no hace nada. puede que falte agregarle una funcion **/
+
+/****
+Mi idea era que al darle click a comprar vaya a una nueva pagina donde se vea el contenido del carrito, y ahi si se crearia un id de carrito, con su contenido y su monto total en la bd
+y apareceria el boton de comprar de MP. Luego de ahi en mas ya va todo lo de MP y cuando devuelve que se hizo la transaccion esto se puede registrar en la BD e incluso bajar una especie de pedido para el de workpaper
+****/
